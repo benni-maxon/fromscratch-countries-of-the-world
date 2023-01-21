@@ -5,11 +5,13 @@ import Interface from '../Interface/Interface.js';
 
 export default function Main() {
   const [continentFilter, setContinentFilter] = useState('');
+  const { countries, error } = useCountries();
 
   return (
     <main>
+      <p>{error}</p>
       <Interface setContinentFilter={setContinentFilter} />
-      {useCountries()
+      {countries
         .filter((country) => country.continent === continentFilter || continentFilter === '')
         .map((item) => (
           <CountryCard key={item.id} {...item} />

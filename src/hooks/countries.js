@@ -3,13 +3,18 @@ import { fetchCountries } from '../services/countries.js';
 
 export function useCountries() {
   const [countries, setCountries] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const resp = await fetchCountries();
-      setCountries(resp);
+      try {
+        const resp = await fetchCountries();
+        setCountries(resp);
+      } catch (e) {
+        setError("Oh no, it's an error!");
+      }
     };
     fetchData();
   }, []);
-  return countries;
+  return { countries, error };
 }
