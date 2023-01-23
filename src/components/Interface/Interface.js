@@ -1,11 +1,10 @@
 import React from 'react';
-import { useCountries } from '../../hooks/countries.js';
 
-export default function Interface({ setContinentFilter }) {
+export default function Interface({ setContinentFilter, countries }) {
   const handleContinentFilter = (e) => {
     setContinentFilter(e.target.value);
   };
-  const continentsArray = [...new Set(useCountries().map((country) => country.continent))].filter(
+  const continentsArray = [...new Set(countries.map((country) => country.continent))].filter(
     (continent) => {
       return continent;
     }

@@ -10,7 +10,7 @@ export default function Main() {
   return (
     <main>
       <p>{error}</p>
-      <Interface setContinentFilter={setContinentFilter} />
+      <Interface {...{ setContinentFilter, countries }} />
       {countries
         .filter((country) => country.continent === continentFilter || continentFilter === '')
         .map((item) => (
